@@ -1,0 +1,48 @@
+version: "3.7"
+
+####################### Services Definition #######################
+services:
+  server-development:
+    image: server:development
+    container_name: server
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+      target: "development"
+    volumes:
+      - "./:/usr/src/app"
+      - "/usr/src/app/node_modules"
+    ports:
+      - 5000:5000
+    environment:
+      - PORT=5000
+    depends_on:
+      - database-development
+    networks:
+      - default
+
+  database-development:
+    image: database:development
+    container_name: database
+    build:
+      context: .
+      dockerfile: Dockerfile.database
+    volumes:
+      - "db-data:/data/db"
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    networks:
+      - default
+
+####################### Networks Definition #######################
+networks:
+  default:
+    driver: bridge
+
+####################### Volumes Definition ########################
+volumes:
+  db-data:
+    driver: local

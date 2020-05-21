@@ -4,7 +4,9 @@
 .LSOverride
 
 # Development
-.env
+.env.production
+/dist
+/node_modules
 
 # IDEs and editors
 /.idea

@@ -1,0 +1,11 @@
+version: "3.7"
+
+####################### Services Definition #######################
+services:
+  server-production:
+    image: server:production
+    container_name: server
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+      target: "production"
