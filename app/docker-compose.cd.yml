@@ -7,5 +7,5 @@ services:
     container_name: server
     build:
       context: .
-      dockerfile: Dockerfile.server
+      dockerfile: Dockerfile
       target: "production"

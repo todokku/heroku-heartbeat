@@ -5,10 +5,6 @@ PAYLOAD='{
     {
       "type": "web",
       "docker_image": "'$(docker inspect registry.heroku.com/"${HEROKU_APP_NAME}"/web --format={{.Id}})'"
-    },
-    {
-      "type": "release",
-      "docker_image": "'$(docker inspect registry.heroku.com/"${HEROKU_APP_NAME}"/release --format={{.Id}})'"
     }
   ]
 }'
