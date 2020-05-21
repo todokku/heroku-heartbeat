@@ -1,0 +1,14 @@
+name: Continuous Integration
+
+on: [pull_request]
+
+jobs:
+  test:
+    name: Test application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Run tests
+        run: make pipeline-test
