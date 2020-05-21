@@ -1,6 +1,7 @@
-# Heroku Backend Template
+# Heroku Heartbeat
 
-This codebase is a wrapper for running and deploying a backend application to Heroku with ease.
+A hackathon app built with Deno which runs a job to ping all my free Heroku dynos to prevent them from sleeping after 
+30 min of inactivity.
 
 #### Requirements:
 
@@ -22,18 +23,13 @@ make run
 
 ## Commands
 
-| Command                       | Target   | Description                                                               |
-|-------------------------------|----------|---------------------------------------------------------------------------|
-| make run                      | Local    | Launches the application (includes hot reloading)                         |
-| make close                    | Local    | Closes the application containers (persists data)                         |
-| make purge                    | Local    | Removes application containers, images, networks, volumes (removes data)  |
-| make workspace                | Local    | Shells into the application to run one-off commands (Ex: npm run db:seed) |
-| make pipeline-test            | Pipeline | Runs tests                                                                |
-| make pipeline-db-seed         | Pipeline | Seeds the database                                                        |
-| make pipeline-db-migrate-up   | Pipeline | Migrates the database up                                                  |
-| make pipeline-db-migrate-down | Pipeline | Migrates the database down                                                |
-| make pipeline-db-wipe         | Pipeline | Wipes the database                                                        |
-| make pipeline-deploy          | Pipeline | Deploys the app to Heroku                                                 |
+| Command              | Target   | Description                                               |
+|----------------------|----------|-----------------------------------------------------------|
+| make run             | Local    | Launches the application (includes hot reloading)         |
+| make close           | Local    | Closes the application containers                         |
+| make purge           | Local    | Removes application containers, images, networks, volumes |
+| make workspace       | Local    | Shells into the application to run one-off commands       |
+| make pipeline-deploy | Pipeline | Deploys the app to Heroku                                 |
 
 ## Deployment
 
@@ -43,15 +39,10 @@ But first, there are some prerequisites to fulfill:
 1. [Login to Heroku](https://id.heroku.com/login)
 2. [Create an auth token](https://dashboard.heroku.com/account/applications/authorizations/new)
 3. [Create an app name](https://dashboard.heroku.com/new-app)
-4. [Add your database as an addon](https://elements.heroku.com/addons).
-    - Choose an addon, click the install button and 
-    select your app name from step 3 to provision it to
-5. [Navigate to your dashboard](https://dashboard.heroku.com/apps).
+4. [Navigate to your dashboard](https://dashboard.heroku.com/apps).
     - Click "my-app-name" > Settings > Reveal Config Vars.
     Copy the keys from [app/.env.example](app/.env.example)
-    and give them values on Heroku. Note that step 4 should have produced 
-    a key for the database url. Ensure this key name matches the one in 
-    the example env.
+    and give them values on Heroku.
 
 ### Manual
 
@@ -73,12 +64,6 @@ make pipeline-deploy
 (Ensure the secret names are identical to the ones in [.env.example](.env.example))
 
 3. Merge some code into master branch
-
-----
-
-> After completing either deployment method, your app should be viewable on the following public URL shortly:
->
-> - https://{HEROKU_APP_NAME}.herokuapp.com
 
 ## License
 
