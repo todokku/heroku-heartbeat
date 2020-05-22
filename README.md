@@ -39,7 +39,7 @@ But first, there are some prerequisites to fulfill:
 1. [Login to Heroku](https://id.heroku.com/login)
 2. [Create an auth token](https://dashboard.heroku.com/account/applications/authorizations/new)
 3. [Create an app name](https://dashboard.heroku.com/new-app)
-4. [Navigate to your dashboard](https://dashboard.heroku.com/apps).
+4. [Navigate to your dashboard](https://dashboard.heroku.com/apps)
     - Click "my-app-name" > Settings > Reveal Config Vars.
     Copy the keys from [app/.env.example](app/.env.example)
     and give them values on Heroku.

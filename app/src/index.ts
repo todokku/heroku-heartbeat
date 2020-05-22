@@ -1,4 +1,6 @@
-import 'https://deno.land/x/dotenv/load.ts';
+import { config } from 'https://deno.land/x/dotenv/mod.ts';
+
+config({ export: true });
 
 interface IApp {
   web_url: string;
@@ -30,4 +32,3 @@ const apps = await response.json();
 setInterval(async () => {
   await Promise.all(apps.map((app: IApp) => fetch(app.web_url)));
 }, TWENTY_FIVE_MINUTES);
-

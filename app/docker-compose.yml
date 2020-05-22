@@ -5,13 +5,6 @@ services:
   server-development:
     image: server:development
     container_name: server
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: "development"
+    build: .
     volumes:
       - "./:/usr/src/app"
-    ports:
-      - 5000:5000
-    environment:
-      - PORT=5000

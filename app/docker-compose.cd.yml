@@ -5,7 +5,4 @@ services:
   server-production:
     image: server:production
     container_name: server
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: "production"
+    build: .
