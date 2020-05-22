@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: Build + deploy application
+    name: Build + deploy server and client
     runs-on: ubuntu-latest
 
     # Env variables get injected into bash scripts.
@@ -15,11 +15,18 @@ jobs:
     env:
       HEROKU_USERNAME: ${{ secrets.HEROKU_USERNAME }}
       HEROKU_AUTH_TOKEN: ${{ secrets.HEROKU_AUTH_TOKEN }}
-      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      HEROKU_SERVER_APP_NAME: ${{ secrets.HEROKU_SERVER_APP_NAME }}
+      HEROKU_CLIENT_APP_NAME: ${{ secrets.HEROKU_CLIENT_APP_NAME }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Deploy to Heroku
-        run: make pipeline-deploy
+      - name: Login to Heroku
+        run: make pipeline-heroku-login
+
+      - name: Deploy server
+        run: make pipeline-deploy-server
+
+      - name: Deploy client
+        run: make pipeline-deploy-client
