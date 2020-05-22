@@ -21,6 +21,6 @@ app.use(oakCors());
 app.use(router.routes());
 
 await app.listen({ port: PORT });
-console.log(`Listening on ${PORT}...`);
+console.log(`Listeningg on ${PORT}...`);
 
 
